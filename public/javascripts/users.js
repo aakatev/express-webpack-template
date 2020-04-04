@@ -1,8 +1,8 @@
 import { h, Component, render } from 'preact';
 import { html } from 'htm/preact';
-import { Header, Footer } from './shared';
+import { Header, Footer } from 'shared';
 
-class IndexPage extends Component {
+class UsersPage extends Component {
   addTodo() {
     const { todos = [] } = this.state;
     this.setState({ todos: todos.concat(`Item ${todos.length}`) });
@@ -22,4 +22,5 @@ class IndexPage extends Component {
     `;
   }
 }
-render(html`<${IndexPage} page="Home" />`, document.getElementById('app'));
+
+render(html`<${UsersPage} page="Users" />`, document.getElementById('app'));
