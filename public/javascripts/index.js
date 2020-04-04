@@ -1,25 +1,21 @@
 import { h, Component, render } from 'preact';
 import { html } from 'htm/preact';
-import { Header, Footer } from './shared';
+import { Navbar } from './shared';
 
 class IndexPage extends Component {
-  addTodo() {
-    const { todos = [] } = this.state;
-    this.setState({ todos: todos.concat(`Item ${todos.length}`) });
-  }
-  render({ page }, { todos = [] }) {
+  render() {
     return html`
-      <div class="app">
-        <${Header} name="ToDo's (${page})" />
-        <ul>
-          ${todos.map(todo => html`
-            <li>${todo}</li>
-          `)}
-        </ul>
-        <button onClick=${() => this.addTodo()}>Add Todo</button>
-        <${Footer}>footer content here<//>
+      <${Navbar}/>
+      <div class="container">
+        <div class="notification">
+          <h3 class="title">Welcome to Home Page!</h3>
+          <p class="subtitle">This application uses Express and Webpack!</p>
+          <div class="buttons">
+            <a class="button is-link is-light" href="/users">See Users</a>
+          </div>
+        </div>
       </div>
     `;
   }
 }
-render(html`<${IndexPage} page="Home" />`, document.getElementById('app'));
+render(html`<${IndexPage}/>`, document.getElementById('app'));

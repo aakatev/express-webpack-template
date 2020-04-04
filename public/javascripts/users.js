@@ -1,26 +1,32 @@
 import { h, Component, render } from 'preact';
 import { html } from 'htm/preact';
-import { Header, Footer } from 'shared';
+import { Navbar } from './shared';
 
 class UsersPage extends Component {
-  addTodo() {
-    const { todos = [] } = this.state;
-    this.setState({ todos: todos.concat(`Item ${todos.length}`) });
+  addUser() {
+    const { users = [] } = this.state;
+    this.setState({ users: users.concat(`User ${users.length}`) });
   }
-  render({ page }, { todos = [] }) {
+  render({ page }, { users = [] }) {
     return html`
-      <div class="app">
-        <${Header} name="ToDo's (${page})" />
-        <ul>
-          ${todos.map(todo => html`
-            <li>${todo}</li>
-          `)}
-        </ul>
-        <button onClick=${() => this.addTodo()}>Add Todo</button>
-        <${Footer}>footer content here<//>
+      <${Navbar}/>
+      <div class="container">
+        <div class="notification">
+          <h3 class="title">Welcome to Users page!</h3>
+          <p class="subtitle">Click a button to add more users!</p>
+          <ul>
+            ${users.map(user => html`
+              <li>${user}</li>
+            `)}
+          </ul>
+          <div class="buttons">
+            <button class="button is-success" onClick=${() => this.addUser()}>Add User</button>
+            <a class="button is-link is-light" href="/">Go back Home</a>
+          </div>
+        </div>        
       </div>
     `;
   }
 }
 
-render(html`<${UsersPage} page="Users" />`, document.getElementById('app'));
+render(html`<${UsersPage} />`, document.getElementById('app'));

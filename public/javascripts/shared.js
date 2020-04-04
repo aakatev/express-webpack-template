@@ -1,9 +1,14 @@
 import { html } from 'htm/preact';
 
-const Header = ({ name }) => html`<h1>${name} List</h1>`
-const Footer = props => html`<footer ...${props} />`
+const Navbar = () => html`
+<nav class="navbar is-success" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      Webpack Express Template
+    </a>
+  </div>
+</nav>`;
 
 export {
-  Header,
-  Footer
+  Navbar
 }
